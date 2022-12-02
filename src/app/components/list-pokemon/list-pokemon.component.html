@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row list-header">
+    <h1 class="tex-align-center list-pokemon animate__animated animate__bounce animate-charcter">
+      <b>Lista de Pokemon</b>
+    </h1>
+  </div>
+  <div class="row">
+    <h4>
+      Filtrar por tipo <small *ngFor="let filter of filters">({{ filter | uppercase }})</small> :
+    </h4>
+    <div class="col-md-12">
+      <button *ngFor="let type of types" type="button" class="btn btn-primary ms-2 mt-2" (click)="changeType(type)">
+        {{ type?.name | uppercase }}
+      </button>
+      <button type="button" class="btn btn-danger mt-2" (click)="deleteAllFilter()">Eliminar filtro</button>
+      <div class="row">
+        <div class="col-md-4 mt-3">
+          <button type="button" class="btn btn-success" (click)="download()">Descargar CSV</button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Filtrar por tipo:
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div> -->
+    <!-- <div class="row mt-3">
+      <div class="container">
+        <div class="col-md-6 d-inline">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Selecciona</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="col-md-2 d-inline">
+          <button class="btn btn-primary">Buscar</button>
+        </div>
+      </div>
+    </div> -->
+    <div class="row mb-5">
+      <div class="col-md-3 mt-4 animate__animated animate__fadeInUp" *ngFor="let item of pokemons; let i = index">
+        <div class="card">
+          <div class="card-body"></div>
+          <img [src]="item?.image" class="card-img-top" [alt]="item?.name" />
+          <h5 class="card-title" style="text-align: center">{{ item?.name | uppercase }}</h5>
+          <div class="card-body tex-align-center">#{{ item?.number }}</div>
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="pokemonSelected(item)"
+          >
+            Detalle
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Especificaciones</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <img [src]="pokemons[indexPokemon]?.image" />
+            <h5 class="card-title" style="text-align: center">
+              {{ pokemons[indexPokemon]?.name | uppercase }}
+            </h5>
+            <h5 class="card-title" style="text-align: center">
+              {{ detailPok?.id }}
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

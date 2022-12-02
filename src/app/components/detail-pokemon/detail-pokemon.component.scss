@@ -1,0 +1,18 @@
+.banner {
+  background-image: url("https://free4kwallpapers.com/uploads/originals/2020/04/29/marvel-avengers-wallpaper.jpg");
+  background-color: #6e000d; /* fallback for old browsers */
+  background-position: 90% top;
+  background-blend-mode: screen;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 480px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .banner {
+    height: 200px;
+    background-position: 60% 5%;
+    background-size: 175%;
+  }
+}
